@@ -6,6 +6,14 @@ public class User {
 	private String password;
 	private String name;
 	
+	public User() {}
+	
+	public User(String[] args) {
+		setUsername(args[0]);
+		setPassword(args[1]);
+		setName(args[2]);
+	}
+	
 	public String getUsername() {
 		return username;
 	}

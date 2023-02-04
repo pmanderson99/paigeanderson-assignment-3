@@ -3,17 +3,23 @@ package com.coderscampus.assignment3;
 
 public class UserService {
 	
-	public User createUser(String[] args) {
-		
-		User user = new User();
-		
-		user.setUsername(args[0]);
-		user.setPassword(args[1]);
-		user.setName(args[2]);
-		
-		return user;
-	}
-		
-}
+	private User[] users;
 	
+	public UserService() {
+		FileService fileService = new FileService();
+		users = fileService.readUsersFromFile();
+	}
+	
+		
+	public User getUserByUsernameAndPassword(String username, String password) {
+
+		for (User user: users) {
+			if (username.equalsIgnoreCase(user.getUsername()) && password.equals(user.getPassword())) {
+				return user;
+			}
+		 }
+		return null;
+	}
+
+  }
 
